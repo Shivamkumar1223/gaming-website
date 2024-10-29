@@ -5,16 +5,14 @@ export default function Home() {
   return (
     <div className="min-h-screen text-white p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)] relative overflow-hidden">
       <AnimatedBackground />
-      
+
       {/* Navigation Bar */}
       <nav className="fixed top-0 left-0 w-full z-50 bg-black/50 backdrop-blur-md border-b border-purple-500/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            <div className="flex items-center">
-              <h1 className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">
-                NexusGaming
-              </h1>
-            </div>
+            <h1 className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">
+              NexusGaming
+            </h1>
             <div className="hidden sm:flex items-center space-x-8">
               <a href="#games" className="hover:text-purple-400 transition-colors">Games</a>
               <a href="#tournaments" className="hover:text-purple-400 transition-colors">Tournaments</a>
@@ -27,7 +25,7 @@ export default function Home() {
           </div>
         </div>
       </nav>
-      
+
       {/* Hero Section */}
       <main className="flex flex-col gap-12 items-center max-w-7xl mx-auto relative pt-24">
         <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
@@ -51,8 +49,13 @@ export default function Home() {
             </div>
           </div>
           <div className="relative h-[400px] rounded-lg overflow-hidden">
-            {/* Add a featured game image here */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
+            <Image
+              src="/featured-game.jpg" // Replace with a valid image path
+              alt="Featured Game"
+              layout="fill"
+              objectFit="cover"
+              className="rounded-lg"
+            />
           </div>
         </div>
 
@@ -62,31 +65,18 @@ export default function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[1, 2, 3, 4].map((game) => (
               <div key={game} className="group relative overflow-hidden rounded-lg aspect-[3/4] bg-purple-900/20 hover:transform hover:scale-105 transition-all duration-300">
+                <Image
+                  src={`/game-${game}.jpg`} // Replace with actual image paths
+                  alt={`Game ${game}`}
+                  layout="fill"
+                  objectFit="cover"
+                  className="rounded-lg"
+                />
                 <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                 <div className="absolute bottom-0 left-0 right-0 p-4 transform translate-y-full group-hover:translate-y-0 transition-transform">
                   <h4 className="font-bold text-lg">Game Title</h4>
                   <p className="text-sm text-gray-300">Action RPG</p>
                 </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Live Tournaments */}
-        <section className="w-full bg-purple-900/10 backdrop-blur-sm p-8 rounded-xl border border-purple-500/20">
-          <h3 className="text-2xl font-bold mb-6">Live Tournaments</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[1, 2, 3].map((tournament) => (
-              <div key={tournament} className="bg-black/40 rounded-lg p-4 hover:bg-black/60 transition-all">
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="w-3 h-3 bg-red-500 rounded-full animate-pulse" />
-                  <span className="text-sm text-red-400">LIVE</span>
-                </div>
-                <h4 className="font-bold">Championship Series</h4>
-                <p className="text-sm text-gray-400">Prize Pool: $10,000</p>
-                <button className="mt-4 w-full bg-purple-600 hover:bg-purple-700 px-4 py-2 rounded-md transition-colors">
-                  Watch Now
-                </button>
               </div>
             ))}
           </div>
