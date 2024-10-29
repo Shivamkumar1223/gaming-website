@@ -1,18 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  images: {
-    domains: [
-      'images.unsplash.com',
-      'cdn.gaming-webpage.com', // Add your image CDN domain
-    ],
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: '**',
-      },
-    ],
-  },
   output: 'standalone',
-};
+  images: {
+    domains: [], // Add any image domains you're using
+  },
+  // Enable static optimization
+  reactStrictMode: true,
+  swcMinify: true,
+}
 
 export default nextConfig;
