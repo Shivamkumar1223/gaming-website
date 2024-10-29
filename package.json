@@ -13,6 +13,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
+<<<<<<< HEAD
     "axios": "^1.6.5",
     "clsx": "^2.1.0",
     "framer-motion": "^10.18.0",
@@ -21,6 +22,11 @@
     "react-dom": "^18.3.1",
     "react-icons": "^5.0.1",
     "tailwind-merge": "^2.2.0"
+=======
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "next": "15.0.1"
+>>>>>>> a7add9c43de75285c93386810181e50cb8f8c220
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.2.0",
