@@ -3,7 +3,6 @@ pipeline {
 
     environment {
         IMAGE_NAME = "your-registry.com/gaming-webpage"
-        DOCKER_CREDENTIALS_ID = 'docker-credentials'  // Ensure this matches your Jenkins credentials ID
     }
 
     stages {
@@ -40,24 +39,6 @@ pipeline {
                 }
             }
         }
-
-        stage('Push Docker Image') {
-            steps {
-                script {
-                    // Log in to Docker and push the built image to the registry
-                    withCredentials([usernamePassword(credentialsId: DOCKER_CREDENTIALS_ID, 
-                                                      usernameVariable: 'DOCKER_USERNAME', 
-                                                      passwordVariable: 'DOCKER_PASSWORD')]) {
-                        sh """
-                            echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
-                            docker push ${IMAGE_NAME}:${env.BUILD_NUMBER}
-                            docker tag ${IMAGE_NAME}:${env.BUILD_NUMBER} ${IMAGE_NAME}:latest
-                            docker push ${IMAGE_NAME}:latest
-                        """
-                    }
-                }
-            }
-        }
     }
 
     post {
@@ -67,7 +48,7 @@ pipeline {
             sh 'docker system prune -f'
         }
         success {
-            echo 'Build and deployment completed successfully!'
+            echo 'Build completed successfully!'
         }
         failure {
             echo 'Build failed. Check logs for details.'
